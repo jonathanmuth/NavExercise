@@ -109,7 +109,7 @@ html {
 
   .menu a {
     display: block;
-    color: black;
+    color: #000;
     text-decoration: none;
     font-weight: normal;
     line-height: 29px;
@@ -129,7 +129,7 @@ html {
   .menu > li {
     display: block;
     position: relative;
-    background-color: white;
+    background-color: #fff;
   }
 
   .menu > li.desktop-logo {
@@ -266,7 +266,7 @@ html {
 .menu a:hover {
   color: #ec008c;
   text-decoration: none;
-  background: white;
+  background: #fff;
 }
 
 .menu > li {
@@ -280,7 +280,7 @@ html {
 }
 
 .menu > li.active {
-  background-color: white;
+  background-color: #fff;
 }
 
 .menu > li.active > a {
@@ -296,7 +296,7 @@ html {
   z-index: 10;
   margin: 0;
   padding: 12px 0;
-  background: white;
+  background: #fff;
   display: none;
 }
 .submenu a {
@@ -338,7 +338,7 @@ html {
 .desktop-logo a:hover {
   background: url("../images/HUGE-magenta.png") no-repeat center center;
   background-size: 60px 24px;
-  background-color: white;
+  background-color: #fff;
 }
 
 .hero {
