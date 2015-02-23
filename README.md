@@ -4,8 +4,8 @@ as completed by [@jonathanmuth](http://twitter.com/jonathanmuth "@jonathanmuth")
 
 ## Tech Stack
 
-* jQuery: Loads the JSON via Ajax request and enables UI interactions.
-* React.js: Parses received JSON and creates a dynamic multi-level navigation as well as all other UI components. 
+* jQuery: Loads the JSON via AJAX request and enables UI interactions.
+* React.js: Parses received JSONP and creates a dynamic multi-level navigation and other UI components. 
 
 ***
 
