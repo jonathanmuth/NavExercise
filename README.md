@@ -1,5 +1,16 @@
 # Huge Navigation Exercise
 
+as completed by [@jonathanmuth](http://twitter.com/jonathanmuth "@jonathanmuth") between February 17th 2015 and February 23rd 2015.
+
+## Tech Stack
+
+* jQuery: Loads the JSON via Ajax request and enables UI interactions.
+* React.js: Parses received JSON and creates a dynamic multi-level navigation as well as all other UI components. 
+
+***
+
+# Original task
+
 ## Overview
 
 This exercise will have the candidate build a responsive site navigation driven by an AJAX request.
