@@ -1,18 +1,387 @@
 @import "fonts.css";
 
-body {
-  background: #ec008c;
-  color: #fff;
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-h1 {
+@media only screen and (max-width : 768px) {
+
+  .bar {
+    position: relative;
+    z-index: 2;
+    display: block;
+    height: 60px;
+    background-color: #ec008c;
+    transition: all 0.5s ease;
+  }
+
+  .toggle {
+    height: 60px;
+    z-index: 1;
+    background: url("../images/toggle-open.svg") no-repeat left center;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+
+  .open > .toggle {
+    background: url("../images/toggle-close.svg") no-repeat right center;
+    background-color: #ec008c;
+    transition: all 0.5s ease;
+  }
+
+  .mobile-logo {
+    position: absolute;
+    top: 0;
+    left: 0 ;
+    height: 60px;
+    width: 0%;
+    margin-left: -72px;
+    padding-left: 72px;
+    z-index: 10;
+    background: url("../images/HUGE-white.png") no-repeat -100% center;
+    background-size: 50px 20px;
+    transition: all 0.5s ease;
+    transition-delay: 0.2s;
+  }
+
+  .open > .mobile-logo {
+    position: absolute;
+    top: 0;
+    left: 0 ;
+    height: 60px;
+    width: 100%;
+    margin-left: -72px;
+    padding-left: 72px;
+    background: url("../images/HUGE-white.png") no-repeat 96px center;
+    background-size: 50px 20px;
+    transition: all 0.5s ease;
+  }
+
+  .open > .mobile-logo a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .menu-wrapper {
+    display: block;
+    position: fixed;
+    transform: translate(-100%, 0);
+    -webkit-transform: translate(-100%, 0);
+    margin-left: -72px;
+    padding-left: 72px; 
+    overflow-y: scroll;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: all 0.5s ease;
+    transition-delay: 0.2s;
+  }
+
+  .menu-wrapper.visible {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    margin-left: -72px;
+    transition: all 0.5s ease;
+  }
+
+  .menu {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 120px;
+  }
+
+  .menu a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-weight: normal;
+    line-height: 29px;
+    font-size: 21px;
+    height: 48px;
+    padding: 12px 24px;
+    font-family: 'HUGEAvantGardeBold';
+    cursor: pointer;
+  }
+
+  .menu a:hover {
+    color: #ec008c;
+    text-decoration: none;
+    background: #eee;
+  }
+
+  .menu > li {
+    display: block;
+    position: relative;
+    background-color: white;
+  }
+
+  .menu > li.desktop-logo {
+    display: none;
+  }
+
+  .menu > li.copyright {
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 60px;
+    padding: 16px 24px;
+    font: 12px/16px 'Galaxie';
+  }
+
+  .menu > li.active .submenu {
+    max-height: 1000px;
+    transition: all 0.75s ease;
+  }
+
+  .menu > li .submenu {
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.75s ease;
+  }
+
+  .menu > li.parent:after {
+    content: "";
+    position: absolute;
+    display: block;
+    right: 16px;
+    top: 12px;
+    width: 24px;
+    height: 24px;
+    background: url("../images/chevron.svg") no-repeat right center;
+    background-size: 24px 24px;
+    transition: all 0.25s ease;
+    pointer-events: none;
+  }
+
+  .menu > li.active.parent:after {
+    -webkit-transform: rotate(180deg);     /* Chrome and other webkit browsers */
+    transform: rotate(180deg);
+    transition: all 0.25s ease;
+  }
+
+  .submenu a {
+    color: #000;
+    white-space: nowrap;
+    display: block;
+    font-size: 16px;
+    font-family: 'Galaxie';
+  }
+
+  .content {
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    margin-left: 0;
+    padding-top: 60px;
+    transition: all 0.5s ease;
+  }
+
+  .content.hidden {
+    transform: translate(100%, 0);
+    -webkit-transform: translate(100%, 0);
+    margin-left: -72px;
+    transition: all 0.5s ease;
+    transition-delay: 0.2s;
+  }
+
+  .hero {
+    position: relative;
+    height: 240px;
+    background: url("../images/background-image.jpg") no-repeat center center;
+    background-size: cover;
+  }
+
+  .hero h1 {
+    display: none;
+  }
+
+  .copy {
+    text-align: center;
+    padding: 50px 24px;
+  }
+
+  .copy h1 {
+    font: 44px/48px HUGEAvantGardeBold;
+    letter-spacing: -0.03em;
+    margin-bottom: 50px;
+    text-align: left;
+  }
+
+  .copy p {
+    max-width: 968px;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 14px;
+    line-height: 24px;
+    font-family: 'Galaxie';
+    text-align: justify;
+  }
+
+}
+
+@media only screen and (min-width : 768px) {
+
+.bar {
+  display: none;
+}
+
+.menu {
+  position: relative;
+  z-index: 100;
+  min-height: 72px;
+  background-color: #ec008c;
+}
+
+.menu a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-weight: normal;
+  line-height: 29px;
+  font-size: 21px;
+  font-family: 'HUGEAvantGardeBold';
+  cursor: pointer;
+}
+.menu a:hover {
+  color: #ec008c;
+  text-decoration: none;
+  background: white;
+}
+
+.menu > li {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.menu > li > a {
+  height: 72px;
+  padding: 24px;
+}
+
+.menu > li.active {
+  background-color: white;
+}
+
+.menu > li.active > a {
+  color: #ec008c;
+}
+
+.menu > li.active .submenu {
+  display: block;
+}
+
+.submenu {
   position: absolute;
+  z-index: 10;
+  margin: 0;
+  padding: 12px 0;
+  background: white;
+  display: none;
+}
+.submenu a {
+  padding: .5em 1.5em;
+  font-size: .9em;
+  color: #000;
+  white-space: nowrap;
+  display: block;
+  font-size: 16px;
+  font-family: 'Galaxie';
+}
+.submenu a:hover {
+  background: #eee;
+  color: #ec008c;
+}
+
+.desktop-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.desktop-logo {
+  height: 72px;
+}
+
+.desktop-logo a {
+  background: url("../images/HUGE-white.png") no-repeat center center;
+  background-size: 60px 24px;
+  width: 108px;
+  margin-right: 24px;
+}
+
+.desktop-logo a:hover {
+  background: url("../images/HUGE-magenta.png") no-repeat center center;
+  background-size: 60px 24px;
+  background-color: white;
+}
+
+.hero {
+  position: relative;
+  height: 640px;
+  background: url("../images/background-image.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.hero h1 {
+  position: absolute;
+  color: #fff;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
   margin: 0;
-  font: 20vmin/1 HUGEAvantGardeBold;
-  letter-spacing: -0.06em;
+  font: 120px/132px HUGEAvantGardeBold;
+  letter-spacing: -0.03em;
   text-align: center;
+  width: 968px;
+}
+
+.copy {
+  text-align: center;
+  padding: 60px 30px;
+}
+
+.copy h1 {
+  display: none;
+}
+
+.copy p {
+  max-width: 968px;
+  margin: 0 auto;
+  text-align: justify;
+  font-size: 24px;
+  line-height: 36px;
+  font-family: 'Galaxie';
+}
+
+li.copyright {
+  display: none;
+}
+
 }
